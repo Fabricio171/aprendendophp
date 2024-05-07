@@ -41,6 +41,6 @@
    === corresponde a identicos (tipo e valor)
      */
 
-       ´ ` ' "
+      
 
 ?>
