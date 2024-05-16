@@ -6,16 +6,6 @@
     <title>cadastros</title>
 </head>
 <body>
-<?
-if (isset($erro)) {
-
-echo'<div style="color:#F00">'.$erro.'</div><br/><br/>';
-
-elseif (isset($sucesso)) {
-   echo'<div style="color:#00f">'.$sucesso.'</div><br/><br/>';
-}  
-   
-   ?>
         <form action="<?=$_SERVER["PHP_SELF"]?>"method="POST">
              <label for="nome">Nome: </label><br>
                 <input type="text" id="nome" placeholder="Qual seu nome?"><br>
@@ -64,7 +54,8 @@ elseif (isset($sucesso)) {
                               $cidade = $_POST["cidade"];
                               $uf     = $_POST["uf"];
 
-                              $stmt = $obj_mysqli->prepare("INSERT INTO `cliente` (`nome`,`email`,`cidade`,`uf`) VALUES (?,?$stmt->bind_param('ssss',$nome,$email,$cidade,$uf))");
+                              $stmt = $obj_mysqli->prepare("INSERT INTO `cliente` (`nome`,`email`,`cidade`,`uf`) VALUES (?,?,?,?)");
+                              $stmt->bind_param('ssss',$nome,$email,$cidade,$uf);
 
                               if (!$stmt->execute()){
                                  $erro = $stmt->error;
