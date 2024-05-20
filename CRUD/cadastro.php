@@ -23,13 +23,21 @@
             {
 
                         if(empty($_POST["nome"])) 
-
+                        { 
                            $erro = "Campo nome obrigatório";
-                                                     
-                        elseif (empty($_POST["email"])) 
-
+                        }                             
+                         elseif (empty($_POST["email"])) 
+                           {
                               $erro = "Campo e-mail obrigatório";
-                         
+                           }  
+                             elseif (empty($_POST["cidade"])) 
+                              {
+                                 $erro = "campo cidade obrigatório";
+                              }
+                                elseif (empty($_POST["uf"]))
+                                {
+                                 $erro = "campo UF obrigatório";
+                                }                         
                    else 
                       { 
                               $id     = $_POST["id"];    
@@ -82,7 +90,7 @@
                   if (isset($_GET["del"]))
                   {
 
-                  $stmt = $obj_mysqli->prepare("DELETE FROM `cliente` WHERE id = ?");
+                  $stmt = $obj_mysqli->prepare("DELETE  FROM `cliente` WHERE id = ?");
                   $stmt->bind_param('i',$id);
                   $stmt->execute();
 
