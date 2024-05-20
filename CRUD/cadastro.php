@@ -108,9 +108,9 @@
             }             
 ?> 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-   <title>CRUD com php, de forma simples e fácil</title>
+   <title>CRUD</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
