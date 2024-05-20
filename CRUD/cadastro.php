@@ -1,10 +1,4 @@
 <?php
-   if (isset($erro)){
-       echo'<div style="color:#F00">'.$erro.'</div><br/><br/>';
-   }
-   elseif (isset($sucesso)){
-      echo'<div style="color:#00f">'.$sucesso.'</div><br/><br/>';
-   }
           
       $obj_mysqli = new mysqli("127.0.0.1","root","","tutocrudphp");
 
@@ -145,7 +139,6 @@
        </form>
        <br><br>
 
-   <div id = "tabela">
          <table width="800px"border="1"cellspacing="0">
                <tr>
                   <td><strong>#</strong></td>
@@ -155,7 +148,7 @@
                   <td><strong>UF</strong></td>
                   <td><strong>#</strong></td>
                </tr>
-         </div>      
+       
 <?php               
                $result = $obj_mysqli->query("SELECT * FROM `cliente`");
                while($aux_query = $result->fetch_assoc())
