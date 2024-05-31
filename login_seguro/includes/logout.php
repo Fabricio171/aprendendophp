@@ -5,7 +5,7 @@
         //apagar todos os valores da sessao
        $_session = array();
        //tras os parametros da sessao
-       $params = session_get_cookies_params();
+       $params = session_get_cookie_params();
        //apagar os cookie em uso
        setcookie(session_name(),
         '',time()-42000,

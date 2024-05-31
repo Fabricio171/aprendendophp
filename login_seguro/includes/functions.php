@@ -14,13 +14,9 @@
                 }
                 // ele atualiza os cookies 
                     $cookiesParams = session_get_cookie_params();
-                        session_get_cookie_params($cookieParams["lifetime"],
-                        $cookieParams["path"],
-                        $cookieParams["domain"],
-                        $secure,
-                        $httponly);
+                    session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
                         //ele da um nome para a sessao. no codigo a cima
-                       session_name ($session_name);
+                       session_name ($session_name);    
                        session_start(); //ele comeca a sessao em php
                        session_regenerate_id(); //ele recupera a sessoa e deleta a anterio
     }
@@ -159,7 +155,7 @@
             $url = preg_replace('|[^a-z0-9-~+_.?#=!&;,/:%@$\|*\'()\\x80-\\xff]|i', '', $url);
 
             $strip = array ('%0d', '%0a', '%0D', '%0A');
-            $url = (strip) $url;
+            $url = (string) $url;
 
             $count = 1 ;
             while ($count)
