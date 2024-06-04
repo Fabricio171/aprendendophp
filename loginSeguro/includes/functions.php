@@ -8,7 +8,7 @@
                 // isso impede de o javascript acessa a identificacao da sessao
             $httponly = true ;
                 // forca ele a usar apenas cookies
-                if(ini_set('session.use_only_cookies',1) ===false){
+                if(ini_set('session.use_only_cookies', 1) === false){
                     header("location: ../error.php?err=could not initiante a safa session (ini_set)");
                     exit;
                 }
