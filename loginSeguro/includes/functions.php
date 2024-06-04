@@ -41,14 +41,14 @@
                                    {
                                         // a conta ta bloquiada
                                         // ele vai enviar um email para o usuario, avisao que esta conta bloqueada
-                                        return false (falso);
+                                        return false;
                                    } 
                                    else 
                                    {
                                         //ele confere se a senha é compativel com do banco 
                                         if ($db_password == $password)  //a senha ta correta
                                         {
-                                                $user_browser = $_server['http_user_agent'];  //protecao xss 
+                                                $user_browser = $_SERVER['HTTP_USER_AGENT'];  //protecao xss 
                                                 $user_id = preg_replace("/[^0-9]+/", "",$user_id);
                                                 $_SESSION['user_id']= $user_id;
                                                     $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "",$username);
@@ -112,13 +112,13 @@
 
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
-                    if ($stmt = $mysqli->prepare("SELECT 'password' FROM members WHERE id = ? LIMIT 1")) 
+                    if ($stmt = $mysqli->prepare("SELECT password FROM members WHERE id = ? LIMIT 1")) 
                      {
                         $stmt -> bind_param('i', $user_id);
                         $stmt -> execute();
                         $stmt -> store_result();
                          
-                        if ($stmt -> num_rows ==1)
+                        if ($stmt ->num_rows == 1)
                         {
                             //caso o usuario exista
                             $stmt->bind_result($password);

@@ -13,15 +13,15 @@
           if (login($email, $password, $mysqli)== true)
           {
             // login sucesso
-                header('location: ../protected_page.php');
+                header('Location: ../protected_page.php');
           }  
           else 
           {
             //falha no login
-                header('location: ../index.php?erro=1');
+                header('Location: ../index.php?erro=1');
           }
         }
-        else
+        else  
         {
             echo 'requisicao invalida';
         }
