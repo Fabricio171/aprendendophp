@@ -9,5 +9,5 @@
     define("CAN_REGISTER","any");
     define("default_role", "member");
 
-    define("secure", False); // ESTRITAMENTE PARA DESENVOLVIMENTO!!!!
+    define("SECURE", FALSE); // ESTRITAMENTE PARA DESENVOLVIMENTO!!!!
 

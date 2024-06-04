@@ -4,7 +4,7 @@
     function sec_session_start() 
     {
         $session_name = 'sec_session_id'; //nome personalizado na sessao
-            $session = secure;
+        $secure = SECURE;
                 // isso impede de o javascript acessa a identificacao da sessao
             $httponly = true ;
                 // forca ele a usar apenas cookies
@@ -13,8 +13,8 @@
                     exit;
                 }
                 // ele atualiza os cookies 
-                    $cookiesParams = session_get_cookie_params();
-                    session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
+                $cookieParams = session_get_cookie_params();
+                session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
                         //ele da um nome para a sessao. no codigo a cima
                        session_name ($session_name);    
                        session_start(); //ele comeca a sessao em php
@@ -23,14 +23,14 @@
     //deste posto para baixo, ele vai verificar se email e semha sao compativeis com que esta no banco de dados 
         function login($email, $password, $mysqli) 
         {
-            if ($stmt = $mysqli->prepare("select id, username, password, salt from members where email=? limit 1")) 
+            if ($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = ? LIMIT 1"))  
             {
-                         $stmt->bind_param('s', $email);
-                         $stmt->excute();   //executa a tarefa adiquirida
-                            $stmt->store_result();
+                         $stmt->bind_param('s', $email); 
+                         $stmt->execute();     //executa a tarefa adiquirida
+                         $stmt->store_result();
 
-                            $stmt->bind_result($user_id, $username, $db_password, $salt);
-                            $stmt->fetch();
+                         $stmt->bind_result($user_id, $username, $db_password, $salt);
+                         $stmt->fetch();
 
                             $password = hash('sha512', $password . $salt);
                             if ($stmt->num_rows == 1) 
@@ -81,13 +81,15 @@
             //registra a hora atual
             $now = time();
                 // ele vai contar todas as alternativa entre 2 horas
-                $valid_attmpts = $now -(2*60*60);
-                if ($stmt = $mysqli->prepare("select time from login_attempts <code><pre> where user_id = ? and time>'$valid_attempts'")) 
+                $valid_attempts = $now - (2 * 60 * 60);
+
+                if ($stmt = $mysqli->prepare("SELECT time FROM login_attempts WHERE user_id = ? AND time > '$valid_attempts'"))
                     {
-                        $stmt-> blind_param('i', $user_id);
+                        $stmt->bind_param('i', $user_id);
+                        $stmt->execute();
                         $stmt->store_result();
 
-                        if ($stmt->num_rows>5)
+                        if ($stmt->num_rows > 5)
                         {
                             return true;
                         }
@@ -99,17 +101,18 @@
         }
      function login_check($mysqli) 
      {
-        if (isset($_session['user_id'],
-                  $_SESSION['username'],
-                  $_SESSION['login_string'])) 
+         if (isset($_SESSION['user_id'], 
+                   $_SESSION['username'], 
+                   $_SESSION['login_string']))
                   {
-                    $user_id = $_session['user_id'];
+                    
+                    $user_id = $_SESSION['user_id'];
                     $login_string = $_SESSION['login_string'];
                     $username = $_SESSION['username'];
 
-                    $user_browser = $_session ['http_user_agent'];
+                    $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
-                    if ($stmt = $mysqli-> prepare("select password from members where id = ? limit 1 "))
+                    if ($stmt = $mysqli->prepare("SELECT 'password' FROM members WHERE id = ? LIMIT 1")) 
                      {
                         $stmt -> bind_param('i', $user_id);
                         $stmt -> execute();
@@ -118,37 +121,40 @@
                         if ($stmt -> num_rows ==1)
                         {
                             //caso o usuario exista
-                                $stmt -> bind_result($password);
-                                $login_check = hash('sha512', $password . $user_browser);
+                            $stmt->bind_result($password);
+                            $stmt->fetch();
+                            $login_check = hash('sha512', $password . $user_browser);
                                  
                                 if ($login_check == $login_string)
-                                {
-                                    //logado
-                                    return true;
-                                }
-                                else 
-                                {
-                                    return false;
-                                }
-                        }
-                        else 
-                        {
-                              //nao foi logado
-                              return  false; 
-                        }
-                     }
+                                 {
+                                      // logado!!!! 
+                                          return true;
+                                 } 
+                                 else {
+                                          // nao logado 
+                                             return false;
+                                      }
+                        } 
+                        else {
+                                
+                                return false;
+                             }
+                     } 
                      else {
-                        return false;
-                     }
-                  }
-                  else
-                  {
-                    return false;
-                  }
-     }   
+                                           
+                            header("Location: ../error.php?err=Database error: cannot prepare statement");
+                            exit();
+                          }
+                  } 
+                  else {
+        
+                            return false;
+                       }
+     }
+
      function esc_url($url)
      {
-            if ("==$url") 
+            if (''==$url) 
             {
                 return $url;
             }
