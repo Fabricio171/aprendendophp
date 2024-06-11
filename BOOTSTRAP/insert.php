@@ -7,7 +7,7 @@
     <?php   
         if (isset($_POST['addnew'])) 
         {
-            if (empty($_POST['firsname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact']))
+            if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact']))
             {
                 echo "Please fillout all required fields";             
             }
@@ -18,7 +18,7 @@
                 $address = $_POST['address'];
                 $contact = $_POST['contact'];
 
-                $sql = "INSERT INTO users (firstname, lastname, address, contact) VALUE ('$firsname', '$lastname', '$address', '$contact')";
+                $sql = "INSERT INTO users (firstname, lastname, address, contact) VALUE ('$firstname', '$lastname', '$address', '$contact')";
                     if ($con->query($sql) == true)
                     {
                         echo "<div class='alert alert-success'> Sucessfully added new user </div>";
@@ -44,7 +44,7 @@
                         <input type="text" name="lastname" id="lastname" class="form-control">
                                 <br>
                     <label for="address">Address</label>
-                        <input type="text" name="address" id="address" class="form-control"></textarea>
+                       <textarea rows="4" name="address" class="form-control"></textarea>
                                 <br>
                     <label for="contact">Contact</label>
                         <input type="text" name="contact" id="contact" class="form-cotrol">

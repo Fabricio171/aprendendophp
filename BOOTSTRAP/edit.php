@@ -2,7 +2,7 @@
     require_once 'connect.php';
     require_once 'header.php';
 ?>  
-    <div class="conteiner">
+    <div class="container">
          <?php
             if (isset($_POST['update']))
             {
@@ -12,15 +12,15 @@
                 }
                 else
                 {
-                    $firsname = $_POST['firsname'];
+                    $firstname = $_POST['firstname'];
                     $lastname = $_POST['lastname'];
                     $address = $_POST['address'];
                     $contact = $_POST['contact'];
 
                     $sql = "UPDATE users SET firstname='{$firstname}', lastname = '{$lastname}', address = '{$address}', 
-                            contact = '{$contact}' WHERE user_id =".$_POST['userid'];  
+                            contact = '{$contact}' WHERE user_id =" .$_POST['userid'];  
                               
-                          if ($con->query($sql) === true)
+                          if ($con->query($sql) === TRUE)
                           {
                             echo "<div class='alert alert-success'> Successfully updated user </div>";   
                           }
@@ -31,12 +31,12 @@
                 }
             }
             
-       $id = isset($_GET['id']) ? (int) $_get['id'] : 0;      
+       $id = isset($_GET['id']) ? (int)$_get['id'] : 0;      
 
-$sql = "SELECT * FROM users WHERE user_id = {$id}";
-$result = $con->query ($sql);
+$sql = "SELECT * FROM users WHERE user_id={$id}";
+$result = $con->query($sql);
 
-if ($result->num_rows<1)
+if ($result->num_rows <1)
 {
     header('location: index.php');
     exit;
@@ -61,7 +61,7 @@ $row = $result->fetch_assoc();
                    <input type="text" id="lastname" name="lastname" value="<?php echo $row['lastname'];?>" class="form-control"> 
                         <br>
                 <label for="address">Address</label>
-                   <input type="text" name="address" class="form-control"><?php echo $row['address'];?></textarea>     
+                  <textarea row="4" name="address" class="form-control"><?php echo $row['address'];?></textarea>     
                         <br>
                 <label for="contact"> Contact</label>
                    <input type="text" id="contact" name="contact" value="<?php echo $row['contact'];?>" class="form-control">       

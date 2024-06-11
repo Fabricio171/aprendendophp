@@ -6,8 +6,7 @@
 
             <style type="text/css">
 
-                    .box
-                    {
+                    .box {
                         background: #f0f0f0;
                         padding: 20px;
                     }
@@ -21,12 +20,13 @@
                 <div class="navbar-header">
 
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-                          data-target="aria-expanded" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only"> Toggle navigation </span>
+                          data-target="#navbar"aria-expanded="false" aria-controls="navbar">
+
+                         <span class="sr-only"> Toggle navigation </span>
                          <span class="icon-bar"> </span> 
                          <span class="icon-bar"> </span>  
                          <span class="icon-bar"> </span> 
-                   </button>  
+                  </button>  
                    
                  <a class="navbar-brand" href="index.php"> CRUD </a>
 
@@ -34,14 +34,15 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php"></a></li>
-                        <li><a href="insert.php"> Add User</li>
-                        <li><a href="user.php"> All Users</li>
+                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="insert.php"> Add User</a></li>
+                        <li><a href="users.php"> All Users</a></li>
                     </ul>
                 </div>         <!-- navbar -->
               </div>           
            </nav> 
-       </div>    
+   
+         
        
        
 

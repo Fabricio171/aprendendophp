@@ -8,5 +8,5 @@
 
      if ($con->connect_error) // caso  der erro 
      {
-        die ("connection faild: " .$con->connect_error); 
+        die ("connection failed: " .$con->connect_error); 
      }   

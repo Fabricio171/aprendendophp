@@ -6,9 +6,9 @@
 
         if (isset($_POST['delete']))    // ele vai deletar o registro que vc deseja 
         {
-            $sql = "DELETE FROM users WHERE user-id=".$_POST['userid'];
+            $sql = "DELETE FROM users WHERE user_id=".$_POST['userid'];
 
-            if ($con->query($sql) === true)
+            if ($con->query($sql) === TRUE)
             {
                 echo "<div class='alert aler-seccess'>Successfully delete user </div>";
             }
@@ -31,5 +31,40 @@
                 </tr>    
        <?php
        
-       
+       while  ($row = $result->fetch_assoc()) 
+       {
+        echo "<form action='' method='post'>";
+        echo "<input type='hidden' value='".$row['user_id']."' name='userid'>";
+
+        echo "<tr>";
+        echo "<td>".$row['firstname']. "</td>";
+        echo "<td>".$row['lastname']. "</td>";
+        echo "<td>".$row['address']. "</td>";
+        echo "<td>".$row['contact']. "</td>";
+
+        echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger'></td>";
+        echo "<td><a href='edit.php?id=".$row['user_id']."' class='btn btn-info'>Edit</a></td>";
+
+        echo "</tr>";
+        echo "</form>"; 
+       }
+
+       ?>
+            </table>
+       <?php    
+      }
+      else
+      {
+        echo "<br><br>No Record Found";
+      }     
+       ?>
+     </div>
+
+     <?php
+        require_once 'footer.php';   
+
+
+
+
+
        
