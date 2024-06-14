@@ -50,7 +50,7 @@
                         <input type="text" name="contact" id="contact" class="form-cotrol">
                                 <br>
                                 <br>
-                        <input type="submit" name="addnew" class="btn btn-sucess" value="Add New">
+                        <input type="submit" name="addnew" class="btn btn-success" value="Add New">
                  </form>
          </div>
     </div>
