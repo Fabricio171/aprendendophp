@@ -3,9 +3,9 @@
     require_once 'header.php';
 ?>
 
- <div class="container">
+ <div class="container">  
     <?php   
-        if (isset($_POST['addnew'])) 
+        if (isset($_POST['addnew']))   // essa parte vai criar um formulario simples para fazer a insercao de dados no banco 
         {
             if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact']))
             {
@@ -35,7 +35,7 @@
          <div class="box">
             <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New User</h3>
 
-                 <form action="" method="post">  <!-- formulario       -->
+                 <form action="" method="post">  <!-- formulario    -->
 
                     <label for="firstname">Firstname</label>
                         <input type="text" name="firstname" id="firstname" class="form-control"> 

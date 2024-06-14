@@ -4,7 +4,7 @@
 ?>  
     <div class="container">
          <?php
-            if (isset($_POST['update']))
+            if (isset($_POST['update'])) // atualizar os dados do banco
             {
                 if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact']))
                 {   
@@ -29,30 +29,30 @@
                             echo "<div class='alert alert-danger'> Error: There was an error while updating user info </div>";
                           }    
                 }
-            }
+            } // fechamento 
             
-       $id = isset($_GET['id']) ? (int)$_get['id'] : 0;      
+       $id = isset($_GET['id']) ? (int)$_GET['id'] :0;  // insercao do dos dados     
 
 $sql = "SELECT * FROM users WHERE user_id={$id}";
 $result = $con->query($sql);
 
 if ($result->num_rows <1)
 {
-    header('location: index.php');
+    header('location: index.php'); 
     exit;
 }
 
-$row = $result->fetch_assoc();
+$row = $result->fetch_assoc(); 
 ?>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3"> <!--um formulario simples-->
       <div class="box">
 
-        <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;MODIFY User</h3>
+        <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;MODIFY User</h3> <!--modificacao de usuario!-->
 
            <form action="" method="post">
-               <input type="hidden" value="<?php echo $row['user_id'];?>" name="userid">  <!-- atualizar os registros -->
+           <input type="hidden" value="<?php echo $row['user_id'];?>" name="userid">  <!-- atualizar os registros -->
 
                 <label for="firstname">Firstname</label>
                    <input type="text" id="firstname" name="firstname" value="<?php echo $row['firstname'];?>" class="form-control">
@@ -75,7 +75,7 @@ $row = $result->fetch_assoc();
 </div>
 
 <?php 
-    require_once 'footer.php';
+    require_once 'footer.php';  // ele chama o footer.php (o rodapé)
     
 
 

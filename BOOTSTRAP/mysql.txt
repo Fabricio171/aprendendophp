@@ -7,4 +7,4 @@ create table `users`(
     address VARCHAR(150) not null,
     contact VARchar (20) not null);
 
-    
+    script bem basico de mysql para banco de dados 

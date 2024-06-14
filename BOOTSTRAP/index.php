@@ -1,6 +1,6 @@
 <?php
     //Author : Samuel 
-    require_once  'header.php';
+    require_once  'header.php'; // ele vai lincar com o header.php
 ?>
 <div class="container">
        <div class="jumbotron">
@@ -9,7 +9,7 @@
 </div>
 
 <?php   
-    require_once 'footer.php';
+    require_once 'footer.php'; // ele vai fazer a mesma coisa
 
 
 
