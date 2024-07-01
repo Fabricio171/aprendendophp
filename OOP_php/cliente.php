@@ -22,6 +22,8 @@
         $this->pais = $pais; 
         $this->telefone = $telefone;  
     }
+
+            //Nome
         function set_nome($nome)
         {
             $this->nome = $nome;
@@ -32,6 +34,7 @@
                 return $this->nome;
             }
 
+                        //Telefone
                 function set_telefone($telefone)
                 {
                     $this->telefone = $telefone;
@@ -41,14 +44,26 @@
                     {
                         return $this->telefone;
                     }
-                        function set_cidade($cidade)
+
+                            //Endereco
+                        function set_endereco($endereco)
                         {
-                            $this->cidade = $cidade; 
-                        }
-                            function get_cidade()
+                            $this->endereco = $endereco; 
+                        }   
+                            function set_cidade($cidade)
                             {
-                                return $this 
+                                $this->cidade = $cidade;
                             }
+                                function set_cep($cep)
+                                {
+                                    $this->cep = $cep;
+                                }
+                                    function set_cep($cep)
+                                    {
+                                        $this->cep = $cep;
+                                    }
+
+                            
     
                         function set_endereco($endereco,$cep, $uf, $pais)
                             {          
